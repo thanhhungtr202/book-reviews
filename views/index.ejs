@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+<% for(var i = 0; i < books.length; i++){ %>
+    <div class="bookEntry">
+        <h2><%= books[i].title %> - <%= books[i].author %></h2>
+        <p><%= String(books[i].date_read).slice(3, 16) %></p>
+        <p>My Score: <%= books[i].score %>/10</p>
+        <p><%= books[i].short_des %></p>
+        <img src="https://covers.openlibrary.org/b/isbn/<%=books[i].isbn%>-M.jpg" />
+        <form action="/edit" method="POST">
+            <input type="hidden" name="bookId" value="<%=books[i].id%>">
+            <input type="submit" value="Edit">
+        </form>
+        <form action="/delete" method="POST">
+            <input type="hidden" name="bookId" value="<%=books[i].id%>">
+            <input type="submit" value="Delete">
+        </form>
+        
+    </div>
+<% } %>
+</div>
+
+<%- include("partials/footer.ejs") %>
