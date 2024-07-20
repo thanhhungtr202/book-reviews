@@ -1,13 +1,23 @@
 <%- include("partials/header.ejs") %>
 
 <div class="container">
-<% for(var i = 0; i < books.length; i++){ %>
+    <form action="/new" method="get">
+        <input type="submit" value="New Record">
+    </form>
+    <form action="/search" method="post">
+        <input type="text" name="title" id="title">
+        <label for="title">Enter The Title</label>
+        <input type="submit" value="Search">
+    </form>
+<% if(locals.books && locals.books.length > 0) { for(var i = 0; i < books.length; i++){ %>
     <div class="bookEntry">
-        <h2><%= books[i].title %> - <%= books[i].author %></h2>
+        <h2><%= books[i].title %></h2>
+        <p><%= books[i].author %></p>
         <p><%= String(books[i].date_read).slice(3, 16) %></p>
         <p>My Score: <%= books[i].score %>/10</p>
         <p><%= books[i].short_des %></p>
         <img src="https://covers.openlibrary.org/b/isbn/<%=books[i].isbn%>-M.jpg" />
+
         <form action="/edit" method="POST">
             <input type="hidden" name="bookId" value="<%=books[i].id%>">
             <input type="submit" value="Edit">
@@ -18,7 +28,7 @@
         </form>
         
     </div>
-<% } %>
+<% }} %>
 </div>
 
 <%- include("partials/footer.ejs") %>

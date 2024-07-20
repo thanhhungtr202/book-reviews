@@ -1,0 +1,17 @@
+<%- include('partials/header.ejs'); %>
+<form action="new" method="post">
+    <input type="text" name="title" id="title">
+    <label for="title">Title</label><br>
+    <input type="text" name="author" id="author">
+    <label for="author">Author</label><br>
+    <input type="text" name="isbn" id="isbn">
+    <label for="isbn">ISBN-10</label><br>
+    <input type="number" name="score" id="score">
+    <label for="score">Score</label><br>
+    <input type="date" name="date" id="date">
+    <label for="date">Date Read</label><br>
+    <input type="text" name="description" id="description">
+    <label for="description">Description</label><br>
+    <input type="submit" value="Update">
+</form>
+<%- include('partials/footer.ejs'); %>
